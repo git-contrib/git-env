@@ -22,7 +22,7 @@ function main() {
 		# Actor
 		append_var GIT_ACTOR=$(git config --get user.email)
 
-		# Reop
+		# Repo
 		append_var GIT_REPOSITORY=$(git remote show origin -n | grep h.URL | sed 's/.*://;s/.git$//')
 		append_var GIT_REPOSITORY_OWNER=$(git remote show origin -n | grep h.URL | sed 's/.*://;s/\/.*.git$//')
 
@@ -31,7 +31,7 @@ function main() {
 		append_var GIT_REF_NAME=$(git rev-parse --abbrev-ref HEAD)
 		append_var GIT_SHA=$(git rev-parse --verify HEAD)
 	else
-		echo "fatal: not a git repository (or any of the parent directories): .git"
+		echo "fatal: not a git repository"
 		exit 1
 	fi
 
